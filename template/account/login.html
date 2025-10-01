@@ -1,0 +1,44 @@
+{% extends 'dentist_info/index.html' %}
+{% load static %}
+
+{% block body %}
+
+<form action="{% url 'account_app:Login' %}" method="post" class="form-container">
+    <link rel="stylesheet" href="{% static 'sign_up.css' %}">
+
+    {% csrf_token %}
+
+    <h1>Login</h1>
+    <div class="form-field">
+        <p>Enter your password:</p>
+        {{form.username}}
+        {% if from.username.errors%}
+            <div class="error-message">
+                {% for error in form.username.errors %}
+                <p>{{error}}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="form-field">
+        <p>Enter your password:</p>
+        {{form.password}}
+
+        {% if form.password.errors %}
+            <div class="error-message">
+                {% for error in form.password.errors %}
+                    <p>{{error}}</p>
+                {% endfor %}
+            </div>
+        {% endif  %}
+    </div>
+
+    <button type="submit" class="form-button">Login</button>
+</form>
+
+<div class="under-form">
+    <p>Don't You have account?</p>
+    <a href="{% url 'account_app:Signup' %}">Sign up</a>
+</div>
+{% endblock %}
