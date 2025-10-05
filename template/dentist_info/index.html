@@ -17,9 +17,9 @@
             </div>
             <nav>
                 <ul class="header_ul">
-                    <li><a href="{% url 'dentist_info_app:home' %}">Home</a></li>
+                    <li><a href="{% url 'dentist_info_app:Home' %}">Home</a></li>
                     <li><a href="{% url 'dentist_info_app:Dentist_list' %}">Find Dentists</a></li>
-                    <li><a href="{% url 'dentist_info_app:contact' %}">Contact</a></li>
+                    <li><a href="{% url 'dentist_info_app:Contact' %}">Contact</a></li>
                     <li><a href="{% url 'dentist_info_app:Booking' %}">Booking</a></li>
 
                 {% if user.is_authenticated %}

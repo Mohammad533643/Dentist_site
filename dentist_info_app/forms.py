@@ -19,11 +19,11 @@ class Booking_Form(forms.ModelForm):
         }
 
 
-class Contact_Form(forms.Form):
+class Contact_Form(forms.ModelForm):
     class Meta:
         model = Contact
         fields = ["Gmail", "Message"]
         widgets = {
-            "Gmail": forms.EmailInput(attrs={"class": "form-control"}),
-            "Message": forms.Textarea(attrs={"class": "form-control"})
+            "Gmail": forms.EmailInput(attrs={"class": "gmail-field"}),
+            "Message": forms.Textarea(attrs={"class": "message-field"})
         }

@@ -16,8 +16,8 @@ router_3.register("", Contact_api)
 
 app_name = "dentist_info_app"
 urlpatterns = [
-    path('Home/', Home.as_view(), name="home"),
-    path('Contact/', Contact_save.as_view(), name="contact"),
+    path('Home/', Home.as_view(), name="Home"),
+    path('Contact/', Contact_save.as_view(), name="Contact"),
     path('Dentist/', Dentists_list.as_view(), name="Dentist_list"),
     path('Booking/', Book.as_view(), name="Booking"),
     path('Dentist_api/', include(router_1.urls), name="Dentist_aap"),

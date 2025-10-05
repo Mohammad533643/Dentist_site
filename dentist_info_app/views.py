@@ -6,7 +6,8 @@ from .forms import Booking_Form, Contact_Form
 from django.views.generic.edit import FormView
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Dentist, Contact
+from .models import Dentist, Contact, Booking
+from django.contrib import messages
 
 
 class Home(TemplateView):
@@ -18,10 +19,10 @@ class Contact_save(LoginRequiredMixin, FormView):
     form_class = Contact_Form
 
     def form_valid(self, form):
-        form = form.save(commit=False)
-        form.Author = self.request.user
-        form.save()
-        return redirect("dentist_info_app:home")
+        obj = form.save(commit=False)
+        obj.Author = self.request.user
+        obj.save()
+        return redirect("dentist_info_app:Home")
 
     def form_invalid(self, form):
         return super().form_invalid(form)
@@ -32,10 +33,25 @@ class Book(LoginRequiredMixin, FormView):
     form_class = Booking_Form
 
     def form_valid(self, form):
-        booking = form.save(commit=False)
-        booking.Patient = self.request.user
-        booking.save()
-        return redirect("dentist_info_app:home")
+        # getting dentist name and time of booking from request
+        dentist_name_in_request = self.request.POST.get("Dentist")
+        booking_time = self.request.POST.get("Date_booking")
+
+        # getting reserved dentist's names and reserved times of booking from Booking model in database
+        reserved_dentists = Booking.objects.all().values_list("Dentist")
+        reserved_times = Booking.objects.all().values_list("Date_booking")
+
+        # Checking time and the requested dentist for booking to avoid conflicts
+        if dentist_name_in_request in reserved_dentists:
+            if not (booking_time in reserved_times):
+                booking = form.save(commit=False)
+                booking.Patient = self.request.user
+                booking.save()
+                return redirect("dentist_info_app:Home")
+
+        messages.error(
+            self.request, "Change the time's visit or drntist Please.")
+        return redirect("dentist_info_app:Booking")
 
     def form_invalid(self, form):
         return super().form_invalid(form)

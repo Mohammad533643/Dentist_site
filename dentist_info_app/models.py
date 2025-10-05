@@ -41,3 +41,6 @@ class Contact(models.Model):
     Date_now = models.DateTimeField(default=timezone.now)
     Gmail = models.EmailField()
     Message = models.TextField()
+
+    def __str__(self):
+        return self.Gmail
