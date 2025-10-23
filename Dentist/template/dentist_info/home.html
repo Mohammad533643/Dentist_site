@@ -1,0 +1,86 @@
+{% extends 'dentist_info/base.html' %}
+{% load static %}
+
+
+{% block body %}
+
+    <!-- Hero Section with Search -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Book Your Dental Appointment Today</h2>
+            <p>Find and schedule appointments with top-rated dentists near you.</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search by specialty, dentist name, city, or area">
+                <button class="search-button">Search</button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Modern dental office">
+        </div>
+    </section>
+
+    <!-- Featured Dentists Section -->
+    <section id="dentists" class="dentists">
+        <div class="container">
+            <h2>Featured Dentists</h2>
+            <div class="dentist-grid">
+                <div class="dentist-item">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d" alt="Dr. John Smith">
+                    <h3>Dr. John Smith</h3>
+                    <p>General Dentistry, New York, NY</p>
+                    <a href="{% url 'dentist_info_app:Booking' %}" class="cta-button">Book Now</a>
+                </div>
+                <div class="dentist-item">
+                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f" alt="Dr. Sarah Johnson">
+                    <h3>Dr. Sarah Johnson</h3>
+                    <p>Orthodontics, Chicago, IL</p>
+                    <a href="{% url 'dentist_info_app:Booking' %}" class="cta-button">Book Now</a>
+                </div>
+                <div class="dentist-item">
+                    <img src="https://images.unsplash.com/photo-1629909615183-4319f314b8d3" alt="Dr. Emily Davis">
+                    <h3>Dr. Emily Davis</h3>
+                    <p>Cosmetic Dentistry, Los Angeles, CA</p>
+                    <a href="{% url 'dentist_info_app:Booking' %}" class="cta-button">Book Now</a>
+                </div>
+            </div>
+            <a href="{% url 'dentist_info_app:Dentist_list' %}" class="view-all">View All Dentists</a>
+        </div>
+    </section>
+
+    <!-- Health Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2>Latest Health Tips</h2>
+            <div class="blog-grid">
+                <div class="blog-item">
+                    <h3>Does Charcoal Toothpaste Really Whiten Teeth?</h3>
+                    <p>Explore the pros and cons of using charcoal toothpaste for a brighter smile.</p>
+                    <a href="https://www.healthline.com/health/dental-and-oral-health/charcoal-toothpaste" class="read-more">Read More</a>
+                </div>
+                <div class="blog-item">
+                    <h3>Is Lemon Juice Safe for Teeth Whitening?</h3>
+                    <p>Learn about the effects of lemon juice and baking soda on your dental health.</p>
+                    <a href="https://www.dentaly.org/en/teeth-whitening/lemon-teeth-whitening/" class="read-more">Read More</a>
+                </div>
+                <div class="blog-item">
+                    <h3>Finding a Dental Specialist in Your Area</h3>
+                    <p>Tips for choosing the right oral health specialist for your needs.</p>
+                    <a href="https://www.emmydental.net/guide-to-picking-right-oral-health-specialist/" class="read-more">Read More</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Get in touch to learn more about our services or to book an appointment.</p>
+            <div class="contact-info">
+                <p><strong>Phone:</strong> (888) 555-1234</p>
+                <p><strong>Email:</strong> support@dentistfinder.com</p>
+                <p><strong>Address:</strong> 456 Smile Ave, Health City, HC 54321</p>
+            </div>
+            <a href="mailto:support@dentistfinder.com" class="cta-button">Get in Touch</a>
+        </div>
+    </section>
+{% endblock %}

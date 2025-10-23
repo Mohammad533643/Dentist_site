@@ -1,0 +1,24 @@
+{% extends 'dentist_info/base.html' %}
+{% load static %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/dentists.css' %}">
+<br><br><br><br><br>
+{% for dentist in Dentist %}
+    <ul class="dentist-list">
+        {% if dentist.Profile_img %}
+            <li><img src="{{dentist.Profile_img.url}}" alt="Profile picture"></li>
+        {% else %}
+            <li><img src="{% static 'images/default.png' %}" alt="Default picture"></li>
+        {% endif %}
+        <li><h2>{{dentist.Full_name}}</h2></li>
+        <li>{{dentist.User_id}}</li>
+        <li>{{dentist.Speciality}}</li>
+        <li>{{dentist.Experience}}</li> 
+    </ul>
+    
+
+    {{form.as_p}}
+
+{% endfor %}
+{% endblock %}

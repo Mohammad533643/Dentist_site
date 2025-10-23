@@ -1,0 +1,124 @@
+/* Define CSS Variables for Reusability (extends previous :root) */
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --text-dark: #003366;
+    --text-darker: #002244;
+    --background-white: #ffffff;
+    --background-light: #f0f8ff;
+    --background-focus: #e2efff;
+    --shadow-light: 0 4px 12px rgba(180, 191, 203, 0.15);
+    --shadow-focus: 0 0 8px #f8f9fa;
+    --border-radius: 6px;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --font-size-base: 1rem;
+    --font-size-md: 0.9375rem; /* 15px */
+    --font-size-lg: 1.125rem; /* 18px */
+    --font-family: 'Tahoma', sans-serif;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-dark: #b3cde0;
+        --text-darker: #d3e0f0;
+        --background-white: #34495e;
+        --background-light: #2c3e50;
+        --background-focus: #3d566e;
+        --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.3);
+        --shadow-focus: 0 0 8px rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Form Container Styles */
+.form-container {
+    max-width: clamp(300px, 90%, 500px); /* Responsive max-width */
+    margin: var(--spacing-lg) auto;
+    padding: var(--spacing-lg);
+    background: var(--background-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    font-family: var(--font-family);
+}
+
+/* Form Group Styles */
+.form-group {
+    margin-bottom: var(--spacing-xl);
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+}
+
+/* Input and Textarea Styles */
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-md);
+    background: var(--background-light);
+    color: var(--text-darker);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+form input[type="email"]:focus,
+form textarea:focus {
+    border-color: var(--primary-hover);
+    box-shadow: var(--shadow-focus);
+    outline: none;
+    background: var(--background-focus);
+}
+
+/* Submit Button Styles */
+button[type="submit"] {
+    background: var(--primary-color);
+    color: var(--background-white);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+    background: var(--primary-hover);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .form-container {
+        max-width: 90%;
+        padding: var(--spacing-md);
+    }
+
+    form input[type="email"],
+    form textarea {
+        font-size: 0.875rem; /* Smaller font for mobile */
+    }
+
+    button[type="submit"] {
+        font-size: 0.875rem;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+}
+
+/* Accessibility Enhancements */
+form input[type="email"]:focus,
+form textarea:focus,
+button[type="submit"]:focus {
+    outline: 2px solid var(--primary-hover);
+    outline-offset: 2px;
+}

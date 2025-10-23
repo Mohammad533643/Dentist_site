@@ -1,0 +1,20 @@
+{% extends 'dentist_info/base.html' %}
+{% load static %}
+
+{% block body %}
+    {% if appointments %}
+        {% for appointment in appointments %}
+        <link rel="stylesheet" href="{% static 'css/appointment.css' %}">
+            <ul id="appointment-list">
+                <li>Patient: {{appointment.Patient}}</li>
+                <li>Patient Gmail: {{appointment.Gmail}}</li>
+                <li>Appointment ID: {{appointment.Appointment_ID}}</li>
+                <li>Date of booking: {{appointment.Date_booking}}</li>
+                <li>Appointment ID: {{appointment.Appointment_ID}}</li>
+            </ul>
+        {% endfor %}
+    {% else %}
+        <h3 id="text">You haven't any appointment.</h3>
+    {% endif %}
+{% endblock %}
+

@@ -1,0 +1,507 @@
+/* Define CSS Variables for Reusability */
+:root {
+    --primary-color: #1a73e8;
+    --primary-hover: #1557b0;
+    --secondary-color: #007bff;
+    --secondary-hover: #0056b3;
+    --success-color: #28a745;
+    --success-hover: #218838;
+    --text-color: #333;
+    --background-light: #f4f7fa;
+    --background-white: #ffffff;
+    --background-dark: #e6f3ff;
+    --border-radius: 10px;
+    --shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
+    --container-width: 80%;
+    --max-container-width: 1200px;
+    --header-height: 60px;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1rem; 
+    --font-size-base: 1rem;
+    --font-size-lg: 1.2rem;
+    --font-size-xl: 2.2rem;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #e6e6e6;
+        --background-light: #2c3e50;
+        --background-white: #34495e;
+        --background-dark: #1e2a3c;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    direction: ltr; 
+    text-align: left;
+    
+    padding-top: calc(var(--header-height) + var(--spacing-md));
+    font-size: var(--font-size-base);
+}
+
+.container {
+    width: var(--container-width);
+    margin: 0 auto;
+    max-width: var(--max-container-width);
+}
+
+/* Header Styles (LTR Adjusted) */
+header {
+    background: var(--primary-color);
+    color: var(--background-white);
+    padding: var(--spacing-md) 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    min-height: var(--header-height);
+}
+
+header .container {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    /* LTR Change: Logo (Start) and Nav (End) will be spaced out */
+    justify-content: space-between;
+    min-height: var(--header-height);
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 5vw, 1.8rem);
+}
+
+/* Navigation Container (LTR Adjusted - Pushes buttons to the right) */
+nav {
+    /* LTR Change: Nav fills the space between logo and the button group */
+    flex-grow: 1; 
+    margin-right: var(--spacing-md);
+    display: flex;
+    /* LTR Change: Links are aligned to the left (near the logo) */
+    justify-content: flex-start;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    margin-left: 30%; 
+}
+
+nav ul li a {
+    color: var(--background-white);
+    text-decoration: none;
+    font-size: var(--font-size-lg);
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    color: var(--background-dark);
+}
+
+/* Navigation Buttons (LTR Adjusted - Pushes to the FAR RIGHT) */
+.nav-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    /* LTR Change: margin-left: auto pushes this entire group to the far right */
+    margin-left: auto; 
+    margin-right: 0;
+}
+
+.btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-base);
+    font-weight: bold;
+    text-align: center;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    color: var(--background-white);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.signup-btn {
+    background: var(--success-color);
+}
+
+.signup-btn:hover,
+.signup-btn:focus {
+    background: var(--success-hover);
+}
+
+.login-btn {
+    background: var(--secondary-color);
+}
+
+.login-btn:hover,
+.login-btn:focus {
+    background: var(--secondary-hover);
+}
+
+/* User Menu (LTR Adjusted & Hover Fixed) */
+.user-menu {
+    position: relative;
+    cursor: pointer;
+    /* LTR Change: Add spacing between buttons and user menu */
+    margin-left: var(--spacing-md);
+    margin-right: 0; 
+}
+
+.user-menu #userMenuBtn img {
+    width: 50px;
+    height: 50px;
+    border-radius: 9999px;
+    border: 2px solid var(--secondary-color);
+    transition: border-color 0.3s ease;
+}
+
+/* Hover/Focus on user image border */
+.user-menu #userMenuBtn img:hover,
+.user-menu #userMenuBtn img:focus {
+    border-color: var(--secondary-hover); 
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + var(--spacing-sm)); 
+    /* LTR Change: Dropdown aligns to the right edge of the button */
+    right: 0;
+    left: auto; 
+    
+    background: var(--background-white);
+    border: 1px solid var(--secondary-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    min-width: 180px;
+    z-index: 1000;
+    padding: 0;
+    list-style: none;
+}
+
+.dropdown-menu li {
+    border-bottom: 1px solid var(--background-dark);
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu li a,
+.dropdown-menu li button {
+    display: block;
+    color: var(--secondary-color);
+    text-decoration: none;
+    background: none;
+    border: none;
+    width: 100%;
+    /* LTR Change: Align dropdown text to the left */
+    text-align: left;
+    font-size: 0.9rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li button:hover,
+.dropdown-menu li a:focus,
+.dropdown-menu li button:focus {
+    background: var(--background-dark);
+    color: var(--primary-hover);
+}
+
+/* Hamburger Menu Toggle - Kept hidden as requested */
+.menu-toggle {
+    display: none !important;
+}
+
+
+/* Hero Section (LTR Adjusted) */
+.hero {
+    background: var(--background-light);
+    text-align: center;
+    padding: clamp(4rem, 10vw, 8rem) 0 var(--spacing-lg);
+}
+
+.hero h2 {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero p {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-lg);
+}
+
+.search-bar {
+    display: flex;
+    /* LTR Change: Default row direction */
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.search-bar input {
+    padding: var(--spacing-sm);
+    width: clamp(50%, 60vw, 60%);
+    max-width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: var(--font-size-base);
+    /* LTR Change: Text input is aligned left */
+    text-align: left; 
+}
+
+.search-button {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--primary-color);
+    color: var(--background-white);
+    border: none;
+    border-radius: 5px;
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover,
+.search-button:focus {
+    background: var(--primary-hover);
+}
+
+/* Dentists Section */
+.dentists {
+    padding: var(--spacing-lg) 0;
+    background: var(--background-white);
+}
+
+.dentists h2 {
+    text-align: center;
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.dentist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.dentist-item {
+    text-align: center;
+    padding: var(--spacing-md);
+    background: var(--background-light);
+    border-radius: var(--border-radius);
+}
+
+.dentist-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+}
+
+.dentist-item h3 {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    margin-bottom: var(--spacing-sm);
+}
+
+.dentist-item p {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-md);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--primary-color);
+    color: var(--background-white);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: var(--font-size-base);
+}
+
+.cta-button:hover,
+.cta-button:focus {
+    background: var(--primary-hover);
+}
+
+/* Blog Section (Force RTL for Content) */
+.blog {
+    padding: var(--spacing-lg) 0;
+    background: var(--background-dark);
+    text-align: center;
+    /* Force alignment for content within blog items */
+    direction: rtl;
+}
+
+.blog h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.blog-item {
+    padding: var(--spacing-md);
+    background: var(--background-white);
+    border-radius: var(--border-radius);
+    /* LTR Change: Align blog text to the right for Persian/Arabic content */
+    text-align: right; 
+    direction: rtl;
+}
+
+.blog-item h3 {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    margin-bottom: var(--spacing-sm);
+}
+
+.blog-item p {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-md);
+}
+
+.read-more {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: var(--font-size-base);
+}
+
+.read-more:hover,
+.read-more:focus {
+    text-decoration: underline;
+}
+
+/* Contact Section */
+.contact {
+    padding: var(--spacing-lg) 0;
+    background: var(--background-white);
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.contact p {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.contact-info p {
+    font-size: var(--font-size-base);
+    margin: var(--spacing-sm) 0;
+}
+
+/* Footer Section */
+footer {
+    background: var(--primary-color);
+    color: var(--background-white);
+    text-align: center;
+    padding: var(--spacing-md) 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design (LTR Adjusted) */
+@media (max-width: 768px) {
+    body {
+        /* Adjusted padding for a two-line mobile header */
+        padding-top: calc(var(--header-height) * 2 + var(--spacing-md));
+    }
+    
+    /* Reset flex-grow for nav on mobile so it takes a new row */
+    nav {
+        flex-grow: 0; 
+        flex-basis: 100%; 
+        justify-content: center;
+        margin-top: var(--spacing-md);
+        margin-right: 0; /* Ensure no residual desktop margin */
+    }
+
+    /* Reset desktop auto margin for mobile to allow clean wrapping */
+    .nav-buttons {
+        margin-left: 0; 
+        margin-right: var(--spacing-md);
+    }
+
+    header .container {
+        flex-direction: row; /* Ensure elements stay in a row, wrapping when needed */
+        justify-content: space-between;
+    }
+    
+    nav ul {
+        justify-content: center;
+        flex-wrap: wrap; 
+        gap: var(--spacing-sm);
+    }
+
+    .user-menu {
+        margin-left: var(--spacing-sm);
+        margin-right: 0;
+    }
+
+    .hero h2 {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+
+    .hero p {
+        font-size: var(--font-size-base);
+    }
+
+    .search-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .search-bar input {
+        width: 80%;
+    }
+
+    .dentist-grid,
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+}
+
+/* Accessibility Enhancements */
+:focus {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+}

@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>DentistFinder</h1>
+            </div>
+            <nav>
+                <ul class="header_ul">
+                    <li><a href="{% url 'dentist_info_app:Home' %}">Home</a></li>
+                    <li><a href="{% url 'dentist_info_app:Dentist_list' %}">Find Dentists</a></li>
+                    <li><a href="{% url 'dentist_info_app:Contact' %}">Contact</a></li>
+                    <li><a href="{% url 'dentist_info_app:Booking' %}">Booking</a></li>
+
+                {% if user.is_authenticated %}
+                    <li class="user-menu">
+                        <span id="userMenuBtn">
+                            <img src="https://th.bing.com/th/id/R.8e2c571ff125b3531705198a15d3103c?rik=gzhbzBpXBa%2bxMA&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-big-image-png-2240.png&ehk=VeWsrun%2fvDy5QDv2Z6Xm8XnIMXyeaz2fhR3AgxlvxAc%3d&risl=&pid=ImgRaw&r=0" alt="User Icon" />
+                        </span>
+                        <ul id="userDropdown" class="dropdown-menu">
+                            <li><a href="{% url 'dentist_info_app:MyAppointments' %}">My Appointments</a></li>
+                            <li><a href="{% url 'account_app:Change_password' %}">Change Password</a></li>
+                            <li>
+                                <form action="{% url 'account_app:Logout' %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+
+                {% else %}
+                    <li><a href="{% url 'account_app:Signup' %}" class="btn signup-btn">Sign Up/Log In</a></li>
+                {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    {% block body %}
+    {% endblock %}
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 DentistFinder. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('userMenuBtn');
+    const dropdown = document.getElementById('userDropdown');
+
+    btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (dropdown.style.display === 'block') {
+            dropdown.style.display = 'none';
+        } else {
+            dropdown.style.display = 'block';
+        }
+    });
+
+    document.addEventListener('click', function() {
+        dropdown.style.display = 'none';
+    });
+});
+</script>
+
+</body>
+</html>
