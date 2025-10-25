@@ -6,7 +6,7 @@
     --secondary-hover: #0056b3;
     --success-color: #28a745;
     --success-hover: #218838;
-    --text-color: #333;
+    --text-color: #ffffff;
     --background-light: #f4f7fa;
     --background-white: #ffffff;
     --background-dark: #e6f3ff;
@@ -37,7 +37,6 @@ body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: var(--text-color);
     direction: ltr; 
     text-align: left;
     
@@ -255,9 +254,8 @@ nav ul li a:focus {
     margin-top: var(--spacing-lg);
 }
 
-.search-bar {
+/* .search-bar {
     display: flex;
-    /* LTR Change: Default row direction */
     flex-direction: row;
     justify-content: center;
     gap: var(--spacing-md);
@@ -271,7 +269,6 @@ nav ul li a:focus {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: var(--font-size-base);
-    /* LTR Change: Text input is aligned left */
     text-align: left; 
 }
 
@@ -289,7 +286,7 @@ nav ul li a:focus {
 .search-button:hover,
 .search-button:focus {
     background: var(--primary-hover);
-}
+} */
 
 /* Dentists Section */
 .dentists {

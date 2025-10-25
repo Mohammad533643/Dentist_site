@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect
 
 
+# Bug
+
 class SignUp(CreateView):
     model = User
     form_class = UserCreationForm

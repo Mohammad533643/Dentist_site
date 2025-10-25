@@ -48,6 +48,11 @@ class Book(LoginRequiredMixin, FormView):
                 booking.Patient = self.request.user
                 booking.save()
                 return redirect("dentist_info_app:Home")
+        else:
+            booking = form.save(commit=False)
+            booking.Patient = self.request.user
+            booking.save()
+            return redirect("dentist_info_app:Home")
 
         messages.error(
             self.request, "Change the time's visit or drntist Please.")
