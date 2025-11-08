@@ -7,6 +7,7 @@
     --success-color: #28a745;
     --success-hover: #218838;
     --text-color: #333;
+     --container-bg: #1e2a3c;
     --background-light: #f4f7fa;
     --background-white: #ffffff;
     --background-dark: #e6f3ff;
@@ -27,9 +28,8 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --text-color: #e6e6e6;
-        --background-light: #2c3e50;
+        --background-light: #1e2a3c;
         --background-white: #34495e;
-        --background-dark: #1e2a3c;
     }
 }
 
@@ -38,7 +38,7 @@
     max-width: clamp(320px, var(--container-width), 400px); /* Responsive width, capped at 400px */
     margin: var(--spacing-lg) auto; /* Dynamic margin using spacing variable */
     padding: var(--spacing-md); /* Consistent padding */
-    background: var(--background-light); /* Matches new code's background */
+    background: var(--container-bg) /* Matches new code's background */
     border-radius: var(--border-radius); /* Uses new border-radius */
     box-shadow: var(--shadow); /* Matches new shadow style */
     font-family: 'Arial', sans-serif; /* Matches body font */
@@ -153,4 +153,8 @@
 .under-form a:focus {
     outline: 2px solid var(--secondary-color); /* Matches new accessibility outline */
     outline-offset: 2px;
+}
+
+.recomendation{
+    font-size: 13px;
 }

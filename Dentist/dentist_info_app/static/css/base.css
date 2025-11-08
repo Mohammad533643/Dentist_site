@@ -1,4 +1,3 @@
-/* Define CSS Variables for Reusability */
 :root {
     --primary-color: #1a73e8;
     --primary-hover: #1557b0;
@@ -23,7 +22,6 @@
     --font-size-xl: 2.2rem;
 }
 
-/* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
     :root {
         --text-color: #e6e6e6;
@@ -34,14 +32,15 @@
 }
 
 body {
+    background-color: #2c3e50;
     margin: 0;
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     direction: ltr; 
     text-align: left;
-    
     padding-top: calc(var(--header-height) + var(--spacing-md));
     font-size: var(--font-size-base);
+    color: #ffffff;
 }
 
 .container {
@@ -50,7 +49,6 @@ body {
     max-width: var(--max-container-width);
 }
 
-/* Header Styles (LTR Adjusted) */
 header {
     background: var(--primary-color);
     color: var(--background-white);
@@ -66,25 +64,96 @@ header .container {
     display: flex;
     flex-wrap: wrap; 
     align-items: center;
-    /* LTR Change: Logo (Start) and Nav (End) will be spaced out */
     justify-content: space-between;
     min-height: var(--header-height);
     padding-top: 0;
     padding-bottom: 0;
 }
 
+/* Search Section Styles */
+.search-section {
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Search Container */
+.search-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 0 1rem;
+}
+
+/* Search Form */
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Search Input */
+.search-form input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    font-size: 1rem;
+    color: #333;
+    border-radius: 50px 0 0 50px;
+    outline: none;
+}
+
+/* Search Button */
+.search-form button {
+    background-color: #007bff; /* رنگ دکمه */
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0 50px 50px 0;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover Effect */
+.search-form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .search-form {
+        flex-direction: column;
+        border-radius: 10px;
+    }
+
+    .search-form input,
+    .search-form button {
+        border-radius: 0;
+        width: 100%;
+    }
+
+    .search-form button {
+        border-top: 1px solid #ddd;
+    }
+}
+
 .logo h1 {
     margin: 0;
     font-size: clamp(1.5rem, 5vw, 1.8rem);
+    color: #030000;
 }
 
-/* Navigation Container (LTR Adjusted - Pushes buttons to the right) */
 nav {
-    /* LTR Change: Nav fills the space between logo and the button group */
     flex-grow: 1; 
     margin-right: var(--spacing-md);
     display: flex;
-    /* LTR Change: Links are aligned to the left (near the logo) */
     justify-content: flex-start;
     align-items: center;
 }
@@ -111,11 +180,9 @@ nav ul li a:focus {
     color: var(--background-dark);
 }
 
-/* Navigation Buttons (LTR Adjusted - Pushes to the FAR RIGHT) */
 .nav-buttons {
     display: flex;
     gap: var(--spacing-md);
-    /* LTR Change: margin-left: auto pushes this entire group to the far right */
     margin-left: auto; 
     margin-right: 0;
 }
@@ -150,11 +217,9 @@ nav ul li a:focus {
     background: var(--secondary-hover);
 }
 
-/* User Menu (LTR Adjusted & Hover Fixed) */
 .user-menu {
     position: relative;
     cursor: pointer;
-    /* LTR Change: Add spacing between buttons and user menu */
     margin-left: var(--spacing-md);
     margin-right: 0; 
 }
@@ -167,7 +232,6 @@ nav ul li a:focus {
     transition: border-color 0.3s ease;
 }
 
-/* Hover/Focus on user image border */
 .user-menu #userMenuBtn img:hover,
 .user-menu #userMenuBtn img:focus {
     border-color: var(--secondary-hover); 
@@ -177,10 +241,8 @@ nav ul li a:focus {
     display: none;
     position: absolute;
     top: calc(100% + var(--spacing-sm)); 
-    /* LTR Change: Dropdown aligns to the right edge of the button */
     right: 0;
     left: auto; 
-    
     background: var(--background-white);
     border: 1px solid var(--secondary-color);
     border-radius: var(--border-radius);
@@ -207,7 +269,6 @@ nav ul li a:focus {
     background: none;
     border: none;
     width: 100%;
-    /* LTR Change: Align dropdown text to the left */
     text-align: left;
     font-size: 0.9rem;
     padding: var(--spacing-sm) var(--spacing-md);
@@ -220,16 +281,13 @@ nav ul li a:focus {
 .dropdown-menu li a:focus,
 .dropdown-menu li button:focus {
     background: var(--background-dark);
-    color: var(--primary-hover);
+    color: white;
 }
 
-/* Hamburger Menu Toggle - Kept hidden as requested */
 .menu-toggle {
     display: none !important;
 }
 
-
-/* Hero Section (LTR Adjusted) */
 .hero {
     background: var(--background-light);
     text-align: center;
@@ -239,11 +297,13 @@ nav ul li a:focus {
 .hero h2 {
     font-size: clamp(2rem, 5vw, 2.5rem);
     margin-bottom: var(--spacing-md);
+    color: #ffffff;
 }
 
 .hero p {
     font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-lg);
+    color: #ffffff;
 }
 
 .hero img {
@@ -254,41 +314,6 @@ nav ul li a:focus {
     margin-top: var(--spacing-lg);
 }
 
-/* .search-bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
-}
-
-.search-bar input {
-    padding: var(--spacing-sm);
-    width: clamp(50%, 60vw, 60%);
-    max-width: 500px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: var(--font-size-base);
-    text-align: left; 
-}
-
-.search-button {
-    padding: var(--spacing-sm) var(--spacing-lg);
-    background: var(--primary-color);
-    color: var(--background-white);
-    border: none;
-    border-radius: 5px;
-    font-size: var(--font-size-base);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.search-button:hover,
-.search-button:focus {
-    background: var(--primary-hover);
-} */
-
-/* Dentists Section */
 .dentists {
     padding: var(--spacing-lg) 0;
     background: var(--background-white);
@@ -298,6 +323,7 @@ nav ul li a:focus {
     text-align: center;
     font-size: var(--font-size-xl);
     margin-bottom: var(--spacing-lg);
+    color: #ffffff;
 }
 
 .dentist-grid {
@@ -310,7 +336,6 @@ nav ul li a:focus {
     text-align: center;
     padding: var(--spacing-md);
     background: var(--background-light);
-    border-radius: var(--border-radius);
 }
 
 .dentist-item img {
@@ -324,11 +349,13 @@ nav ul li a:focus {
 .dentist-item h3 {
     font-size: clamp(1.2rem, 4vw, 1.5rem);
     margin-bottom: var(--spacing-sm);
+    color: #ffffff;
 }
 
 .dentist-item p {
     font-size: var(--font-size-base);
     margin-bottom: var(--spacing-md);
+    color: #ffffff;
 }
 
 .cta-button {
@@ -346,18 +373,17 @@ nav ul li a:focus {
     background: var(--primary-hover);
 }
 
-/* Blog Section (Force RTL for Content) */
 .blog {
     padding: var(--spacing-lg) 0;
     background: var(--background-dark);
     text-align: center;
-    /* Force alignment for content within blog items */
     direction: rtl;
 }
 
 .blog h2 {
     font-size: var(--font-size-xl);
     margin-bottom: var(--spacing-lg);
+    color: #ffffff;
 }
 
 .blog-grid {
@@ -370,7 +396,6 @@ nav ul li a:focus {
     padding: var(--spacing-md);
     background: var(--background-white);
     border-radius: var(--border-radius);
-    /* LTR Change: Align blog text to the right for Persian/Arabic content */
     text-align: right; 
     direction: rtl;
 }
@@ -378,11 +403,13 @@ nav ul li a:focus {
 .blog-item h3 {
     font-size: clamp(1.2rem, 4vw, 1.5rem);
     margin-bottom: var(--spacing-sm);
+    color: #ffffff;
 }
 
 .blog-item p {
     font-size: var(--font-size-base);
     margin-bottom: var(--spacing-md);
+    color: #ffffff;
 }
 
 .read-more {
@@ -396,7 +423,6 @@ nav ul li a:focus {
     text-decoration: underline;
 }
 
-/* Contact Section */
 .contact {
     padding: var(--spacing-lg) 0;
     background: var(--background-white);
@@ -406,99 +432,175 @@ nav ul li a:focus {
 .contact h2 {
     font-size: var(--font-size-xl);
     margin-bottom: var(--spacing-md);
+    color: #ffffff;
 }
 
 .contact p {
     font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-lg);
+    color: #ffffff;
 }
 
 .contact-info p {
     font-size: var(--font-size-base);
     margin: var(--spacing-sm) 0;
+    color: #ffffff;
 }
 
-/* Footer Section */
 footer {
-    background: var(--primary-color);
-    color: var(--background-white);
+    background: var(--background-white);
+    color: var(--text-color);
+    padding: calc(var(--spacing-lg) * 2) 0 var(--spacing-lg);
+    margin-top: auto; 
+}
+
+#contact {
+    padding: var(--spacing-lg) 0;
+    background: var(--background-white);
     text-align: center;
-    padding: var(--spacing-md) 0;
 }
 
-footer p {
+#contact .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+    max-width: var(--max-container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+#contact h2 {
+    font-size: var(--font-size-xl);
+    color: #ffffff;
+    margin: 0 0 var(--spacing-md);
+    font-weight: 700;
+}
+
+#contact > .container > p {
+    font-size: var(--font-size-lg);
+    color: #ffffff;
+    max-width: 600px;
+    margin: 0 auto var(--spacing-lg);
+    line-height: 1.7;
+}
+
+#contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    width: 100%;
+    max-width: 500px;
+    background: var(--background-light);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: left;
+    direction: ltr;
+}
+
+#contact-info p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: var(--font-size-base);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
 }
 
-/* Responsive Design (LTR Adjusted) */
+#contact-info p strong {
+    color: var(--primary-color);
+    min-width: 70px;
+    font-weight: 600;
+}
+
+#contact-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--primary-color);
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: var(--font-size-base);
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+    min-width: 180px;
+}
+
+#contact-cta:hover,
+#contact-cta:focus {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(26, 115, 232, 0.4);
+}
+
+#contact-cta::after {
+    content: "→";
+    margin-left: var(--spacing-sm);
+    transition: transform 0.3s ease;
+}
+
+#contact-cta:hover::after {
+    transform: translateX(4px);
+}
+
 @media (max-width: 768px) {
-    body {
-        /* Adjusted padding for a two-line mobile header */
-        padding-top: calc(var(--header-height) * 2 + var(--spacing-md));
-    }
-    
-    /* Reset flex-grow for nav on mobile so it takes a new row */
-    nav {
-        flex-grow: 0; 
-        flex-basis: 100%; 
-        justify-content: center;
-        margin-top: var(--spacing-md);
-        margin-right: 0; /* Ensure no residual desktop margin */
+    #contact h2 {
+        font-size: clamp(1.8rem, 6vw, 2.2rem);
     }
 
-    /* Reset desktop auto margin for mobile to allow clean wrapping */
-    .nav-buttons {
-        margin-left: 0; 
-        margin-right: var(--spacing-md);
-    }
-
-    header .container {
-        flex-direction: row; /* Ensure elements stay in a row, wrapping when needed */
-        justify-content: space-between;
-    }
-    
-    nav ul {
-        justify-content: center;
-        flex-wrap: wrap; 
-        gap: var(--spacing-sm);
-    }
-
-    .user-menu {
-        margin-left: var(--spacing-sm);
-        margin-right: 0;
-    }
-
-    .hero h2 {
-        font-size: clamp(1.5rem, 5vw, 2rem);
-    }
-
-    .hero p {
+    #contact > .container > p {
         font-size: var(--font-size-base);
     }
 
-    .search-bar {
+    #contact-info {
+        padding: var(--spacing-md);
+        text-align: center;
+    }
+
+    #contact-info p {
+        justify-content: center;
         flex-direction: column;
-        align-items: center;
-    }
-    
-    .search-bar input {
-        width: 80%;
+        gap: 0.25rem;
     }
 
-    .dentist-grid,
-    .blog-grid {
-        grid-template-columns: 1fr;
+    #contact-info p strong {
+        min-width: auto;
     }
 
-    .btn {
-        font-size: 0.9rem;
-        padding: var(--spacing-sm) var(--spacing-md);
+    #contact-cta {
+        width: 100%;
+        max-width: 300px;
+        font-size: 0.95rem;
     }
 }
 
-/* Accessibility Enhancements */
-:focus {
-    outline: 2px solid var(--secondary-color);
-    outline-offset: 2px;
+@media (prefers-color-scheme: dark) {
+    #contact {
+        background: var(--background-dark);
+    }
+
+    #contact h2 {
+        color: #ffffff;
+    }
+
+    #contact > .container > p {
+        color: #ffffff;
+    }
+
+    #contact-info {
+        background: var(--background-white);
+    }
+
+    #contact-info p {
+        color: #ffffff;
+    }
+
+    #contact-info p strong {
+        color: var(--secondary-color);
+    }
 }
