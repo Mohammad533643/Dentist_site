@@ -134,6 +134,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#Because of the previous settings, the order of excution is important.
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.Argon2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
+    "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
+]
+
+#These settings can vary a lot.
+ARGON2_SETTINGS = {
+    'time_cost': 2,  
+    'memory_cost': 10240,
+    'parallelism': 4,
+    'hash_len': 32,
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/

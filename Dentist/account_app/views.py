@@ -5,9 +5,8 @@ from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 
-
-# Bug
 
 class SignUp(CreateView):
     model = User
@@ -17,6 +16,7 @@ class SignUp(CreateView):
 
     def form_valid(self, form):
         user = form.save()
+        messages.success(self.request, f"welcome {user.username}")
         login(self.request, user)
         return redirect(self.success_url)
 
@@ -27,25 +27,28 @@ class Login(LoginView):
 
     def form_valid(self, form):
         user = form.get_user()
+        messages.success(self.request, f"welcome {user.username}")
         login(self.request, user)
         return redirect("dentist_info_app:Home")
 
     def form_invalid(self):
+        messages.error(self.request, "There is an error,please try again.")
         return redirect("account_app:Login")
 
 
 class Change_Password(PasswordChangeView):
     template_name = "account/change_password.html"
-    success_url = "dentist_info_app:Home"
+    success_url = reverse_lazy("dentist_info_app:Home")
 
     def form_valid(self, form):
         form.save()
         update_session_auth_hash(self.request, form.user)
         messages.success(self.request, "Your password changed successful.")
-        return redirect(self.success_url)
+        return super().form_valid(form)
 
-    def form_invalid(self):
-        return redirect("account_app:Change_password")
+    def form_invalid(self, form):
+        messages.error(self.request, "There is an error,please try again.")
+        return super().form_invalid(form)
 
 
 class Logout(LogoutView):
