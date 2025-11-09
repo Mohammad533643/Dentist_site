@@ -9,7 +9,7 @@
     --text-color: #333;
     --background-light: #f4f7fa;
     --background-white: #ffffff;
-    --background-dark: #e6f3ff;
+    /* --background-dark: #e6f3ff; */
     --border-radius: 10px;
     --shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
     --container-width: 80%;
@@ -17,7 +17,7 @@
     --header-height: 60px;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
-    --spacing-lg: 1rem; 
+    --spacing-lg: 1rem;
     --font-size-base: 1rem;
     --font-size-lg: 1.2rem;
     --font-size-xl: 2.2rem;
@@ -29,7 +29,7 @@
         --text-dark: #ecf0f1;
         --text-medium: #bdc3c7;
         --text-light: #95a5a6;
-        --background-white: #34495e;
+        --background-white: #1e2a3c;
         --background-light: #2c3e50;
         --background-accent: #3d566e;
     }

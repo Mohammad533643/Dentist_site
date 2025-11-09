@@ -7,10 +7,10 @@
     --success-color: #28a745;
     --success-hover: #218838;
     --text-color: #333;
-     --container-bg: #1e2a3c;
+    --container-bg: #1e2a3c;
     --background-light: #f4f7fa;
     --background-white: #ffffff;
-    --background-dark: #e6f3ff;
+    /* --background-dark: #e6f3ff; */
     --border-radius: 10px;
     --shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
     --container-width: 80%;
@@ -28,8 +28,8 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --text-color: #e6e6e6;
-        --background-light: #1e2a3c;
-        --background-white: #34495e;
+        --background-light: #e6e6e6;
+        --background-white: var(--container-bg);
     }
 }
 
@@ -38,7 +38,7 @@
     max-width: clamp(320px, var(--container-width), 400px); /* Responsive width, capped at 400px */
     margin: var(--spacing-lg) auto; /* Dynamic margin using spacing variable */
     padding: var(--spacing-md); /* Consistent padding */
-    background: var(--container-bg) /* Matches new code's background */
+    background-color: var(--container-bg);  /*Matches new code's background*/
     border-radius: var(--border-radius); /* Uses new border-radius */
     box-shadow: var(--shadow); /* Matches new shadow style */
     font-family: 'Arial', sans-serif; /* Matches body font */
@@ -60,7 +60,7 @@
     border-radius: var(--border-radius); /* Matches new border-radius */
     font-size: var(--font-size-base); /* Matches new font size */
     box-sizing: border-box; /* Prevents layout issues */
-    background: var(--background-white); /* Matches new background-white */
+    background-color: #2c3e50; /* Matches new background-white */
     color: var(--text-color); /* Matches text color */
     transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
 }

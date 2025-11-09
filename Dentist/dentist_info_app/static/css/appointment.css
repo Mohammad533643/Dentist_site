@@ -1,48 +1,44 @@
 #appointment-list-wrapper {
-    display: flex;                  /* استفاده از Flexbox برای مرکز کردن محتوا */
-    justify-content: center;         /* مرکز کردن در محور افقی */
-    align-items: center;             /* مرکز کردن در محور عمودی */
-    height: 100vh;                   /* ارتفاع کل صفحه */
-    padding: 20px;                   /* فضای داخلی */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
 }
 
 #appointment-list {
-    list-style-type: none;           /* حذف bullets */
+    list-style-type: none;
     padding: 0;
     margin: 0;
     margin-left: 30%;
     margin-top: 1.5em;
     padding: 1%;
-    background-color: #ffffff;      /* پس‌زمینه سفید */
-    border-radius: 8px;              /* گوشه‌های گرد */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* سایه زیر لیست */
-    width: 40%;                      /* عرض نصف صفحه */
-    max-width: 800px;                /* حداکثر عرض 800px */
-    margin-bottom: 20px;             /* فاصله پایین */
+    background-color: #1e2a3c;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    max-width: 800px;
+    margin-bottom: 20px;
 }
 
 #appointment-list li {
-    font-size: 16px;                 /* اندازه فونت */
-    color: #333333;                  /* رنگ متن */
+    font-size: 16px;
+    color: #fff8f8;
     padding: 0.5%;
-    border-bottom: 1px solid #eeeeee; /* خط جداکننده بین آیتم‌ها */
+    border-bottom: 1px solid #eeeeee; 
 }
 
 #appointment-list li:last-child {
-    border-bottom: none;             /* حذف خط جداکننده برای آخرین آیتم */
-}
-
-#appointment-list li:nth-child(even) {
-    background-color: #f0f8ff;       /* رنگ پس‌زمینه آبی روشن برای آیتم‌های زوج */
+    border-bottom: none;
 }
 
 #appointment-list li:hover {
-    background-color: #e0f7fa;       /* رنگ پس‌زمینه آبی روشن‌تر هنگام هاور */
+    background-color: #74b1d061;      
 }
 
 #appointment-list li:first-child {
-    font-weight: bold;               /* فونت اولین آیتم ضخیم‌تر */
-    color: #007BFF;                  /* رنگ آبی برای اولین آیتم */
+    font-weight: bold;               
+    color: #007BFF;               
 }
 
 #text{
