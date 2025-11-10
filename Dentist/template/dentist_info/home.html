@@ -12,7 +12,7 @@
             <!-- Search Bar Section -->
             <section class="search-section">
                 <div class="search-container">
-                    <form action="#" method="GET" class="search-form">
+                    <form action="{% url 'dentist_info_app:Search' %}" method="GET" class="search-form">
                         <input type="text" name="query" placeholder="Search for dentists, treatments, or locations..." required>
                         <button type="submit">Search</button>
                     </form>

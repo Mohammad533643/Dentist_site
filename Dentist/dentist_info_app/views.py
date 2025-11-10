@@ -8,10 +8,24 @@ from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Dentist, Contact, Booking
 from django.contrib import messages
+from django.db.models import Q
+from django.views.generic import View
+from django.shortcuts import render
 
 
 class Home(TemplateView):
     template_name = "dentist_info/home.html"
+
+
+class Search(View):
+    def get(self, request):
+        inp = request.GET.get("query")
+        query = Dentist.objects.filter(Q(Full_name__icontains=inp) | Q(User_id=inp) |
+                                       Q(Speciality__icontains=inp) | Q(City__icontains=inp) |
+                                       Q(Experience__icontains=inp)
+                                       )
+        context = {"query": query}
+        return render(request, "dentist_info/search.html", context)
 
 
 class Contact_save(LoginRequiredMixin, FormView):
