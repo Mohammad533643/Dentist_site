@@ -1,4 +1,3 @@
-/* Define CSS Variables for Reusability (extends previous :root) */
 :root {
     --primary-color: #1a73e8;
     --primary-hover: #1557b0;
@@ -8,8 +7,6 @@
     --success-hover: #218838;
     --text-color: #333;
     --background-light: #f4f7fa;
-    --background-white: #ffffff;
-    /* --background-dark: #e6f3ff; */
     --border-radius: 10px;
     --shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
     --container-width: 80%;
@@ -17,57 +14,74 @@
     --header-height: 60px;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
-    --spacing-lg: 1rem;
+    --spacing-lg: 1rem; 
     --font-size-base: 1rem;
     --font-size-lg: 1.2rem;
     --font-size-xl: 2.2rem;
 }
 
-/* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
     :root {
         --text-dark: #ecf0f1;
         --text-medium: #bdc3c7;
         --text-light: #95a5a6;
-        --background-white: #1e2a3c;
         --background-light: #2c3e50;
         --background-accent: #3d566e;
     }
 }
 
-/* Dentist List Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #2c3e50;  
+    color: #ecf0f1;                   
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    width: var(--container-width);
+    margin: 0 auto;
+    max-width: var(--max-container-width);
+    padding: var(--spacing-lg);
+}
+
 .dentist-list {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: var(--background-white);
+    background:#1e2a3c; 
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--border-radius);
     padding: var(--spacing-lg);
     margin: var(--spacing-md);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
-    max-width: clamp(300px, 90%, 500px); /* Responsive max-width */
+    max-width: clamp(300px, 90%, 500px);
+    backdrop-filter: blur(8px);
 }
 
 .dentist-list:hover,
 .dentist-list:focus-within {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border-color: rgba(26, 115, 232, 0.4);
 }
 
 .dentist-list img {
-    width: clamp(100px, 20vw, 120px); /* Responsive image size */
+    width: clamp(100px, 20vw, 120px);
     height: clamp(100px, 20vw, 120px);
-    border-radius: var(--border-radius-circle);
+    border-radius: 50%;
     object-fit: cover;
     margin-bottom: var(--spacing-md);
-    border: 3px solid var(--background-light);
+    border: 3px solid #1a73e8;
 }
 
 .dentist-list h2 {
-    font-size: clamp(var(--font-size-md), 4vw, var(--font-size-lg));
-    color: var(--text-dark);
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
+    color: #ecf0f1;
     margin: var(--spacing-sm) 0;
     font-weight: 600;
 }
@@ -75,36 +89,31 @@
 .dentist-list li {
     list-style: none;
     text-align: center;
-    color: var(--text-medium);
+    color: #bdc3c7;
     font-size: var(--font-size-base);
     margin: calc(var(--spacing-sm) / 2) 0;
 }
 
 .dentist-list li:nth-child(3) {
     font-style: italic;
-    color: var(--text-light);
+    color: #95a5a6;
 }
 
 .dentist-list li:nth-child(4) {
-    color: var(--secondary-color);
+    color: #1a73e8;
     font-weight: 500;
 }
 
 .dentist-list li:nth-child(5) {
-    background: var(--background-accent);
+    background: #1a73e8;
+    color: white;
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: 20px;
     font-size: 0.9rem;
+    display: inline-block;
+    margin-top: var(--spacing-sm);
 }
 
-/* Container Styles (for context, assuming integration with previous code) */
-.container {
-    width: var(--container-width, 80%);
-    margin: 0 auto;
-    max-width: var(--max-container-width, 1200px);
-}
-
-/* Responsive Design */
 @media (min-width: 768px) {
     .container {
         display: flex;
@@ -130,12 +139,11 @@
     }
 
     .dentist-list h2 {
-        font-size: var(--font-size-md);
+        font-size: 1.1rem;
     }
 }
 
-/* Accessibility Enhancements */
 .dentist-list:focus-within {
-    outline: 2px solid var(--secondary-color);
+    outline: 2px solid #1a73e8;
     outline-offset: 2px;
 }
