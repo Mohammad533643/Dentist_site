@@ -1,11 +1,23 @@
 from django.views.generic import TemplateView
+
+# rigeon: api
+
 from .seializers import Dentist_Serializer, User_Serializer, Contact_serializer
-from django.contrib.auth.models import User
 from rest_framework.viewsets import ModelViewSet
+
+# endrigeon
+
+from django.contrib.auth.models import User
+
+# region:register
+
 from .forms import Booking_Form, Contact_Form
 from django.views.generic.edit import FormView
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+# endrigeon
+
 from .models import Dentist, Contact, Booking
 from django.contrib import messages
 from django.db.models import Q

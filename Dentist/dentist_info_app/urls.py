@@ -22,7 +22,8 @@ urlpatterns = [
     path('Dentist/', Dentists_list.as_view(), name="Dentist_list"),
     path('Booking/', Book.as_view(), name="Booking"),
     path('MyAppointments/', Appointment_list.as_view(), name="MyAppointments"),
-    path('Dentist_api/', include(router_1.urls), name="Dentist_aap"),
+    path('Dentist_api/', include(router_1.urls),
+         name="Dentist_api"),  # renamed aap to api
     path('User_api/', include(router_2.urls), name="User_api"),
     path('Contact_api/', include(router_3.urls), name="contact_api"),
 
