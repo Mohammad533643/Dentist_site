@@ -8,6 +8,8 @@
   <img alt="Repo size" src="https://img.shields.io/github/repo-size/Mohammad533643/Dentist_site?color=informational" />
 </p>
 
+![Short GIF of the website](Dentist/assets/Dentist_site/Dentist/assets/DentistFinder.gif)
+
 # 📝 Features
 
 ✅ This website allows you to find a dentist and book an appointment (of course, this is just a practice project).<br/>
