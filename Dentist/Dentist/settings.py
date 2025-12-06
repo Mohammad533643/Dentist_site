@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "dentist_info_app",
+    "dentist_info_app.apps.DentistInfoAppConfig",  # edited for using email
     "account_app",
     "rest_framework",
     "rest_framework_simplejwt",
@@ -134,7 +134,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-#Because of the previous settings, the order of excution is important.
+# Because of the previous settings, the order of excution is important.
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.Argon2PasswordHasher",
     "django.contrib.auth.hashers.PBKDF2PasswordHasher",
@@ -142,9 +142,9 @@ PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
 ]
 
-#These settings can vary a lot.
+# These settings can vary a lot.
 ARGON2_SETTINGS = {
-    'time_cost': 2,  
+    'time_cost': 2,
     'memory_cost': 10240,
     'parallelism': 4,
     'hash_len': 32,
@@ -176,3 +176,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
 LOGIN_URL = "/login/"
+
+
+# region Email
+
+# config email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = "tesysendingwithpython@gmail.com"
+EMAIL_HOST_PASSWORD = "ozod epcm rlpd denq"
+
+# endregion
